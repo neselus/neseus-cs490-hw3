@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/graphql/comments.sdl.js"],
+  "sourcesContent": ["export const schema = gql`\n  type Comment {\n    id: Int!\n    name: String!\n    body: String!\n    post: Post!\n    postId: Int!\n    createdAt: DateTime!\n  }\n\n  type Query {\n    comments(postId: Int!): [Comment!]! @skipAuth\n  }\n\n  input CreateCommentInput {\n    name: String!\n    body: String!\n    postId: Int!\n  }\n\n  input UpdateCommentInput {\n    name: String\n    body: String\n    postId: Int\n  }\n\n  type Mutation {\n    createComment(input: CreateCommentInput!): Comment! @skipAuth\n    deleteComment(id: Int!): Comment! @requireAuth(roles: \"moderator\")\n  }\n`"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;yBAAyB;AAAlB,MAAMA,SAASC,mBAAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "names": ["schema", "gql"]
+}

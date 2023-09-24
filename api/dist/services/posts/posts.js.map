@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/services/posts/posts.js"],
+  "sourcesContent": ["import { db } from 'src/lib/db'\n\nexport const posts = () => {\n  return db.post.findMany()\n}\n\nexport const post = ({ id }) => {\n  return db.post.findUnique({ where: { id } })\n}\n\nexport const Post = {\n  user: (_obj, { root }) =>\n    db.post.findFirst({ where: { id: root.id } }).user(),\n}"],
+  "mappings": ";;;;;;;;;;;;;;;;;AAAA;;;;;;;gBAAW;AAEJ,MAAMA,QAAQA,MAAM;AACzB,SAAOC,aAAGC,KAAKC,SAAS;AAC1B;AAEO,MAAMD,OAAOA,CAAC;EAAEE;AAAG,MAAM;AAC9B,SAAOH,aAAGC,KAAKG,WAAW;IAAEC,OAAO;MAAEF;IAAG;EAAE,CAAC;AAC7C;AAEO,MAAMG,OAAO;EAClBC,MAAMA,CAACC,MAAM;IAAEC;EAAK,MAClBT,aAAGC,KAAKS,UAAU;IAAEL,OAAO;MAAEF,IAAIM,KAAKN;IAAG;EAAE,CAAC,EAAEI,KAAK;AACvD;",
+  "names": ["posts", "db", "post", "findMany", "id", "findUnique", "where", "Post", "user", "_obj", "root", "findFirst"]
+}

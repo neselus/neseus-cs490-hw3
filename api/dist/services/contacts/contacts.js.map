@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/services/contacts/contacts.js"],
+  "sourcesContent": ["import { db } from 'src/lib/db'\nimport { validate } from '@redwoodjs/api'\n\nexport const contacts = () => {\n  return db.contact.findMany()\n}\n\nexport const contact = ({ id }) => {\n  return db.contact.findUnique({\n    where: { id },\n  })\n}\n\nexport const createContact = ({ input }) => {\n  validate(input.email, 'email', { email: true })\n\n  return db.contact.create({\n    data: input,\n  })\n}\n\nexport const updateContact = ({ id, input }) => {\n  return db.contact.update({\n    data: input,\n    where: { id },\n  })\n}\n\nexport const deleteContact = ({ id }) => {\n  return db.contact.delete({\n    where: { id },\n  })\n}\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;AAAA;;;;;;;;;gBAAW;AACX,iBAAyB;AAElB,MAAMA,WAAWA,MAAM;AAC5B,SAAOC,aAAGC,QAAQC,SAAS;AAC7B;AAEO,MAAMD,UAAUA,CAAC;EAAEE;AAAG,MAAM;AACjC,SAAOH,aAAGC,QAAQG,WAAW;IAC3BC,OAAO;MAAEF;IAAG;EACd,CAAC;AACH;AAEO,MAAMG,gBAAgBA,CAAC;EAAEC;AAAM,MAAM;AAC1CC,2BAASD,MAAME,OAAO,SAAS;IAAEA,OAAO;EAAK,CAAC;AAE9C,SAAOT,aAAGC,QAAQS,OAAO;IACvBC,MAAMJ;EACR,CAAC;AACH;AAEO,MAAMK,gBAAgBA,CAAC;EAAET;EAAII;AAAM,MAAM;AAC9C,SAAOP,aAAGC,QAAQY,OAAO;IACvBF,MAAMJ;IACNF,OAAO;MAAEF;IAAG;EACd,CAAC;AACH;AAEO,MAAMW,gBAAgBA,CAAC;EAAEX;AAAG,MAAM;AACvC,SAAOH,aAAGC,QAAQc,OAAO;IACvBV,OAAO;MAAEF;IAAG;EACd,CAAC;AACH;",
+  "names": ["contacts", "db", "contact", "findMany", "id", "findUnique", "where", "createContact", "input", "validate", "email", "create", "data", "updateContact", "update", "deleteContact", "delete"]
+}

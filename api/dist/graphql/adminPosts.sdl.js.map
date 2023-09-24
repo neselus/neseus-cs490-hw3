@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/graphql/adminPosts.sdl.js"],
+  "sourcesContent": ["export const schema = gql`\n  type Query {\n    adminPosts: [Post!]! @requireAuth(roles: [\"admin\"])\n    adminPost(id: Int!): Post @requireAuth(roles: [\"admin\"])\n  }\n\n  input CreatePostInput {\n    title: String!\n    body: String!\n  }\n\n  input UpdatePostInput {\n    title: String\n    body: String\n  }\n\n  type Mutation {\n    createPost(input: CreatePostInput!): Post! @requireAuth(roles: [\"admin\"])\n    updatePost(id: Int!, input: UpdatePostInput!): Post! @requireAuth(roles: [\"admin\"])\n    deletePost(id: Int!): Post! @requireAuth(roles: [\"admin\"])\n  }\n`"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;yBAAyB;AAAlB,MAAMA,SAASC,mBAAAA;;;;;;;;;;;;;;;;;;;;;;",
+  "names": ["schema", "gql"]
+}
