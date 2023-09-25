@@ -1,0 +1,6 @@
+Starting log:
+ - Time: 2023-09-24T23:37:39.648Z
+ - Name: updateCheck (updatecheck)
+ - Command: yarn
+ - Arguments: node /home/nese/cs490-hw3/redwood-tutorial/node_modules/@redwoodjs/cli/dist/lib/updateCheckExecute.js
+
