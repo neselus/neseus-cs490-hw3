@@ -1,0 +1,141 @@
+"""
+Use to check whether or not a user is authenticated and is associated
+with an optional set of roles.
+"""
+directive @requireAuth(roles: [String]) on FIELD_DEFINITION
+
+"""Use to skip authentication checks and allow public access."""
+directive @skipAuth on FIELD_DEFINITION
+
+scalar BigInt
+
+type Comment {
+  body: String!
+  createdAt: DateTime!
+  id: Int!
+  name: String!
+  post: Post!
+  postId: Int!
+}
+
+type Contact {
+  createdAt: DateTime!
+  email: String!
+  id: Int!
+  message: String!
+  name: String!
+}
+
+input CreateCommentInput {
+  body: String!
+  name: String!
+  postId: Int!
+}
+
+input CreateContactInput {
+  email: String!
+  message: String!
+  name: String!
+}
+
+input CreatePostInput {
+  body: String!
+  title: String!
+}
+
+input CreateUserInput {
+  email: String!
+  name: String
+}
+
+scalar Date
+
+scalar DateTime
+
+scalar JSON
+
+scalar JSONObject
+
+type Mutation {
+  createComment(input: CreateCommentInput!): Comment!
+  createContact(input: CreateContactInput!): Contact!
+  createPost(input: CreatePostInput!): Post!
+  createUser(input: CreateUserInput!): User!
+  deleteComment(id: Int!): Comment!
+  deleteContact(id: Int!): Contact!
+  deletePost(id: Int!): Post!
+  deleteUser(id: Int!): User!
+  updateContact(id: Int!, input: UpdateContactInput!): Contact!
+  updatePost(id: Int!, input: UpdatePostInput!): Post!
+  updateUser(id: Int!, input: UpdateUserInput!): User!
+}
+
+type Post {
+  body: String!
+  createdAt: DateTime!
+  id: Int!
+  title: String!
+  user: User!
+}
+
+"""About the Redwood queries."""
+type Query {
+  adminPost(id: Int!): Post
+  adminPosts: [Post!]!
+  comments(postId: Int!): [Comment!]!
+  contact(id: Int!): Contact
+  contacts: [Contact!]!
+  post(id: Int!): Post
+  posts: [Post!]!
+
+  """Fetches the Redwood root schema."""
+  redwood: Redwood
+  user(id: Int!): User
+  users: [User!]!
+}
+
+"""
+The RedwoodJS Root Schema
+
+Defines details about RedwoodJS such as the current user and version information.
+"""
+type Redwood {
+  """The current user."""
+  currentUser: JSON
+
+  """The version of Prisma."""
+  prismaVersion: String
+
+  """The version of Redwood."""
+  version: String
+}
+
+scalar Time
+
+input UpdateCommentInput {
+  body: String
+  name: String
+  postId: Int
+}
+
+input UpdateContactInput {
+  email: String
+  message: String
+  name: String
+}
+
+input UpdatePostInput {
+  body: String
+  title: String
+}
+
+input UpdateUserInput {
+  email: String
+  name: String
+}
+
+type User {
+  email: String!
+  id: Int!
+  name: String
+}

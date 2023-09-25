@@ -1,0 +1,8 @@
+db.comment.findMany()
+db.comment.findMany({ where: { postId: 1 }})
+db.comment.findMany({ where: { postId: 1 }})
+ db.post.findMany({ select: { id: true } })
+db.comment.create({ data: { name: 'Peter', body: 'I also like leaving comments', postId: 2 } })
+db.comment.findMany({ where: { postId: 1 }})
+> db.user.update({ where: { id: 1 } , data: { roles: 'admin' } })
+db.user.update({ where: { id: 1 } , data: { roles: 'admin' } })
